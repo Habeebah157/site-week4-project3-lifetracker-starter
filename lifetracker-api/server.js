@@ -1,15 +1,7 @@
-const express = require("express");
-const cors = require("cors");
-const morgan = require("morgan");
-const { PORT } = require("./config.test");
+// const authRoutes = require("./routes/auth");
+const app = require("./app");
+const { PORT } = require("./config");
 
-const app = express();
-
-app.use(cors());
-
-app.use(express.json());
-app.use(morgan("tiny"));
-
-app.listen(PORT, () => {
-  console.log(`❤️ Server running https://localhost:${PORT}`);
+app.listen(PORT, function () {
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
 });

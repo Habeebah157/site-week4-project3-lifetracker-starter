@@ -1,28 +1,30 @@
 require("dotenv").config();
 require("colors");
-const PORT = process.env.PORT ? Number(process.env.PORT) : 3001;
+const PORT = process.env.SERVER_PORT ? Number(process.env.SERVER_PORT) : 3002;
 
-function getDatabaseuri() {
+function getDatabaseUri() {
   const dbUser = process.env.DATABASE_USER || "postgres";
-  const dbsecKey = process.env.SECRET_KEY;
   const dbpass = process.env.DATABASE_PASS
     ? encodeURI(process.env.DATABASE_PASS)
     : "postgres";
   const dbhost = process.env.DATABASE_HOST || "localhost";
-  const bcrypt = process.env.BCRYPT_WORK_FACTOR;
-  const dbtname = process.env.DATABASE_TEST_NAME;
+  const dbName = process.env.DATABASE_NAME || "lifetracker";
+  const dbport = process.env.DATABASE_PORT || 5432;
 
   return (
     process.env.DATABASE_URL ||
-    `postgresql://${dbUser}:${dbpass}@${dbhost}:${dbsecKey}:${bcrypt}/${dbtname}`
+    `postgresql://${dbUser}:${dbpass}@${dbhost}:${dbport}/${dbName}`
   );
 }
+
+const BCRYPT_WORK_FACTOR = 13;
 console.log("name".green);
 console.log("PORT".blue, PORT);
-console.log("Database URI".magenta, getDatabaseuri());
+console.log("Database URI".magenta, getDatabaseUri());
 console.log("---");
 
 module.exports = {
   PORT,
-  getDatabaseuri,
+  BCRYPT_WORK_FACTOR,
+  getDatabaseUri,
 };
