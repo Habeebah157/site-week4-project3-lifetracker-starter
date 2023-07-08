@@ -4,6 +4,7 @@ import "./LoginPage.css";
 // import profilepic from "../assets/imgavatar.jpg";
 import fitness from "../assets/imgavatar.png";
 import Navbar from "../Navbar/Navbar";
+import { Link } from "react-router-dom";
 // lifetracker-ui/src/components/assets/imgavatar.png
 
 const LoginPage = ({ onLogin }) => {
@@ -62,9 +63,11 @@ const LoginPage = ({ onLogin }) => {
             onChange={handleChange}
             required
           />
-          <button className="login-btn" type="submit">
-            Login
-          </button>
+          <Link to="/">
+            <button className="login-btn" type="submit">
+              Login
+            </button>
+          </Link>
         </div>
         <div>
           <span>New to us? Sign Up</span>

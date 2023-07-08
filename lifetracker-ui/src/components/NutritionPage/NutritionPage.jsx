@@ -118,29 +118,38 @@ const NutritionPage = ({ loggedIn, onNutritionPage, nutritionData }) => {
                 onChange={handleChange}
                 required
               />
-              <button type="submit">Save</button>
+              <div>
+                <button className="submit" type="submit">
+                  Save
+                </button>
+              </div>
             </form>
           </div>
           {/* {nData.map((data) => {
             {
               <p>{data.calories}</p>;
             }
+
+
           })} */}
+
+          {nData.map((data) => {
+            const date = new Date(data.created_at);
+            const normalDate = date.toLocaleString();
+            return (
+              <div className="nutiInfo">
+                <p>{data.id}</p>
+                <p>{data.name}</p>
+                <p>{data.category}</p>
+                <p>{normalDate}</p>
+              </div>
+            );
+          })}
         </div>
       ) : (
         <h1 className="loggedInh1">Log in to access</h1>
       )}
       {}
-      {nData.map((data) => {
-        return (
-          <div className="nutiInfo">
-            <p>{data.id}</p>
-            <p>{data.name}</p>
-            <p>{data.category}</p>
-            <p>{data.created_at}</p>
-          </div>
-        );
-      })}
     </div>
   );
 };

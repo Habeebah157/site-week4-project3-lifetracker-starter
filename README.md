@@ -30,14 +30,20 @@ By the end of this project you will be able to...
 - [x] **The Nav Bar:** Implement customized views for users who are logged in vs not logged in.
   - [ ] If the user is logged in, it should display a **Sign Out** button.
   - [x] If no user is logged in, it should display **Login** and **Register** buttons.
-  - [ ] Display a logo on the far left side, and contain links to the individual detailed activity pages.
+  - [x] Display a logo on the far left side, and contain links to the individual detailed activity pages.
 - [ ] Users should have the ability to track at least **one** type of activity (i.e., nutrition, exercise, sleep, etc.). Each activity should be tracked on separate pages.
-- [x] **Detailed Activity Page:** Display and enter activities.
-  - [x] Display a feed of all previously tracked activities.
-  - [x] A form to enter relevant information (i.e., if tracking nutrition, the user can enter calories, timestamp, image, category, etc.).
-  - [x] Each activity tracked is given a unique ID for easy lookup.
+- [] **Detailed Activity Page:** Display and enter activities.
+  - [] Display a feed of all previously tracked activities.
+  - [] A form to enter relevant information (i.e., if tracking nutrition, the user can enter calories, timestamp, image, category, etc.).
+  - [] Each activity tracked is given a unique ID for easy lookup.
 - [ ] Deploy your website with Render. Check out our [Render Deployment Guide](https://courses.codepath.org/snippets/site/render_deployment_guide) for detailed instructions.
 
+### Video
+
+<a href="https://www.loom.com/share/a9dcc60e452145aba4d97a717047a7f3">
+  
+    <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/a9dcc60e452145aba4d97a717047a7f3-with-play.gif">
+  </a>
 ### Stretch Features
 
 Implement any of the following features to improve the application:

@@ -76,6 +76,7 @@ const SignInPage = ({ onSignIn }) => {
             <label>Password</label>
             <input
               placeholder="password"
+              type="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
@@ -85,6 +86,7 @@ const SignInPage = ({ onSignIn }) => {
             <input
               name="confirmPassword"
               placeholder="confirm password"
+              type="password"
               value={formData.confirmPassword}
               onChange={handleChange}
               required
