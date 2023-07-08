@@ -6,3 +6,12 @@
 .loggedout {
   color: black;
 }
+.averagCalories {
+  border: solid;
+  margin: 50px;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+.caloricavg {
+  color: black;
+}

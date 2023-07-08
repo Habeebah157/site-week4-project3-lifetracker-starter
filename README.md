@@ -40,8 +40,8 @@ By the end of this project you will be able to...
 
 ### Video
 
-<a href="https://www.loom.com/share/e46b83566345475684e0145a8edd8398">
-    <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/e46b83566345475684e0145a8edd8398-with-play.gif">
+<a href="https://www.loom.com/share/c5bab4052fcf4670b1ca62656816c253">
+    <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/c5bab4052fcf4670b1ca62656816c253-with-play.gif">
   </a>
 
 ### Stretch Features

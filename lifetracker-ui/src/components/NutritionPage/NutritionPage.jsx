@@ -56,6 +56,10 @@ const NutritionPage = ({ loggedIn, onNutritionPage, nutritionData }) => {
     onNutritionPage(name, category, quantity, calories, image_url);
     setFormData(INITIAL_FORM_DATA);
   };
+  const addImageFallback = (event) => {
+    event.currentTarget.src =
+      "https://media.istockphoto.com/id/1457889029/photo/group-of-food-with-high-content-of-dietary-fiber-arranged-side-by-side.jpg?s=612x612&w=is&k=20&c=n4-M3CyEMJdmZEsXN92sIQAxQPDJeGPX2tkBk1s_RtE=";
+  };
   console.log("nData", nData);
   return (
     <div>
@@ -117,6 +121,7 @@ const NutritionPage = ({ loggedIn, onNutritionPage, nutritionData }) => {
                 type="url"
                 value={formData.image_url}
                 onChange={handleChange}
+                onError={addImageFallback}
                 required
               />
               <div>
