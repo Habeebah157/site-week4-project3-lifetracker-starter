@@ -1,6 +1,5 @@
-.ExercisePage .button {
-  display: flex;
-}
-.ExercisePage .button button {
-  flex: 1;
+.exercise-header {
+  text-align: center;
+  background-color: purple;
+  padding: 80px;
 }

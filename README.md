@@ -89,7 +89,7 @@ Implement any of the following features to improve the application:
 
 Update the `App` component to manage authentication state:
 
-- [ ] Create a state variable called `appState` with a function called `setAppState` to update that state.
+- [x] Create a state variable called `appState` with a function called `setAppState` to update that state.
   - [ ] Initialize `appState` with an object containing properties like `user`, `isAuthenticated`, `nutrition`, `sleep`, and `exercise`.
 - [ ] Implement a `useEffect` hook to fetch the user data.
   - [ ] Define an asynchronous function named `fetchUser` to fetch the user data.
@@ -367,7 +367,7 @@ Here are the pieces of functionality that should be built out for the backend:
   - [x] Install new dependencies for `bcrypt`, `jsonwebtoken`, `colors`, `dotenv`, `pg`
   - [x] Commit all work to `git`
   <!-- I do not understand where to pput the .env file -->
-  - [ ] Add a `.env` file to the root of the repo and include the following environment variables
+  - [x] Add a `.env` file to the root of the repo and include the following environment variables
     - [x] `PORT` (default to `3001`)
     - [x] `SECRET_KEY` (set to a long random string)
     - [x] `BCRYPT_WORK_FACTOR` (set to `13`)
@@ -399,7 +399,7 @@ Here are the pieces of functionality that should be built out for the backend:
 
             <!-- what is the difference between this and the other one. config.test.js -->
 
-  - [ ] Add a `config.js` file
+  - [x] Add a `config.js` file
     - [ ] Use the `dotenv` package to parse the environment variables from the `.env` file.
     - [x] Export each of the environment variables from the `config.js` file until the tests pass
     - [x] Write a `getDatabaseUri` function so that all the tests pass
@@ -439,53 +439,54 @@ Here are the pieces of functionality that should be built out for the backend:
   - [x] Setup the database by running `psql -f lifetracker.sql`
   - [x] Create a new file at the root of the project called `db.js`. In that file:
     - [x] Import the `getDatabaseUri` function from the `config.js` file.
-    - [ ] Initialize a new PostgreSQL client with the `pg` package and connect to PostgreSQL using any necessary config variables.
-    - [ ] Connect to PostgreSQL and log a message to the terminal on success or failure.
-    - [ ] Export the connected database client
-  - [ ] Commit all work to `git`
-  - [ ] A database client is now ready to be used!
+    - [x] Initialize a new PostgreSQL client with the `pg` package and connect to PostgreSQL using any necessary config variables.
+    - [x] Connect to PostgreSQL and log a message to the terminal on success or failure.
+    - [x] Export the connected database client
+  - [x] Commit all work to `git`
+  - [x] A database client is now ready to be used!
 - [ ] **Server**
   - [ ] Build out a bare-bones Express server with a health check route and an adequate middleware pipeline.
-  - [ ] Create a `utils` directory
-    - [ ] In the `utils` directory, create an `errors.js` file.
-    - [ ] Create error classes inside the file that will be used throughout the app.
+  - [x] Create a `utils` directory
+    - [x] In the `utils` directory, create an `errors.js` file.
+    - [x] Create error classes inside the file that will be used throughout the app.
   - [ ] In the `app.test.js` file, write tests that:
     - [ ] Ensure that the Express application responds to `GET` requests to the `/` route with a JSON object of `{ "ping": "pong" }`
     - [ ] Check that middleware like `morgan` and `cors` exist, along with the JSON `body-parser` middleware from `express`
     - [ ] Include an `afterAll` hook that calls `await db.end()` so that any open database connections close when all the tests are finished.
-  - [ ] Add code to the `app.js` and `server.js` file to get a simple server running along with responding to `GET` requests to the `/` route
-  - [ ] Create error classes inside the `utils/errors.js` file.
+  - [x] Add code to the `app.js` and `server.js` file to get a simple server running along with responding to `GET` requests to the `/` route
+  <!-- //look at the git ex -->
+  - [x] Create error classes inside the `utils/errors.js` file.
   - [ ] Add `404` and generic error handler middleware to the `app.js` file.
   - [ ] In the `server.js` file:
-    - [ ] Import the Express app and the `config.js` file
+    - [x] Import the Express app and the `config.js` file
     - [ ] Have the `app` listen on the port specified by `config.PORT`.
   - [ ] Commit all work to `git`
   - [ ] Test out the fancy new Express server by starting it up in a new terminal window!
 - [ ] **Common Test Configuration**
-  - [ ] It would probably be helpful to create some common test functions that can be used throughout the application's testing suite.
-  - [ ] Create a new directory called `tests`
-  - [ ] Now, touch a new file at `tests/common.js`
+  - [x] It would probably be helpful to create some common test functions that can be used throughout the application's testing suite.
+  - [x] Create a new directory called `tests`
+  - [x] Now, touch a new file at `tests/common.js`
     - [ ] In that file:
-      - [ ] Import the `db` client
+      - [x] Import the `db` client
       - [ ] Create and export four functions:
-        - [ ] `commonBeforeAll`
+        - [x] `commonBeforeAll`
           - [ ] Actions that should happen before any tests in a particular file run.
           - [ ] This should include things like executing queries that delete all items from any tables in the test database that might have been added during testing
-        - [ ] `commonBeforeEach`
+        - [x] `commonBeforeEach`
           - [ ] Actions that should happen before any **single** test in a particular file runs.
           - [ ] This should include things like starting a database transaction
-        - [ ] `commonAfterEach`
+        - [x] `commonAfterEach`
           - [ ] Actions that should happen after any **single** test in a particular file runs.
           - [ ] This should include things like rolling back any database actions before they're committed
-        - [ ] `commonAfterAll`
+        - [x] `commonAfterAll`
           - [ ] Actions that should occur after all tests in a particular file run.
           - [ ] This should include things like ending any open database client connections
   - [ ] Commit all work to `git`
 - [ ] **Authentication**
   - [ ] Go ahead and build out a full-fledged authentication flow using PostgreSQL, `bcrypt`, and JSON Web Tokens. For it all to work, we'll need a `User` model, a `security` middleware, some `tokens` utility functions, and the appropriate `auth` routes.
-  - [ ] Add new directories for `models`, `routes`, and `middleware`
+  - [x] Add new directories for `models`, `routes`, and `middleware`
   - [ ] The **User** model
-    - [ ] In the `models` directory, create two new files: `models/user.js` and `models/user.test.js`
+    - [x] In the `models` directory, create two new files: `models/user.js` and `models/user.test.js`
       - [ ] The `User` model should have **at least** the following static methods:
         - [ ] `login`
         - [ ] `register`

@@ -1,6 +1,5 @@
-.SleepPage .button {
-  display: flex;
-}
-.SleepPage .button button {
-  flex: 1;
+.sleep-header {
+  text-align: center;
+  background-color: purple;
+  padding: 80px;
 }

@@ -14,6 +14,7 @@ class User {
       last_name: user.last_name,
     };
   }
+
   static async login(credentials) {
     const { email, password } = credentials;
     const requiredField = ["email", "password"];
@@ -24,7 +25,7 @@ class User {
     });
 
     const user = await User.fetchUserByEmail(email);
-
+    console.log("user", user);
     if (user) {
       const isValid = await bcrypt.compare(password, user.password);
       if (isValid) {
@@ -34,21 +35,13 @@ class User {
     throw new UnauthorizedError("Invalid email/password combo");
   }
   static async register(credentials) {
-    const {
-      username,
-      password,
-      first_name,
-      last_name,
-      email,
-      created_at,
-      updated_at,
-      id,
-    } = credentials;
+    //pulling out all the variable from requestbody brought in as credentials
+    const { username, password, firstName, lastName, email } = credentials;
     const requiredField = [
       "username",
       "password",
-      "first_name",
-      "last_name",
+      "firstName",
+      "lastName",
       "email",
     ];
     try {
@@ -60,6 +53,7 @@ class User {
     } catch (err) {
       throw err;
     }
+
     requiredField.forEach((field) => {
       if (!credentials.hasOwnProperty(field)) {
         throw new BadRequestError(`Missing ${field} in request body`);
@@ -74,11 +68,10 @@ class User {
     if (existingUser) {
       throw new BadRequestError(`Duplicate email: ${email}`);
     }
-    const hashedPassword = await bcrypt.hash(
-      credentials.password,
-      BCRYPT_WORK_FACTOR
-    );
+    const hashedPassword = await bcrypt.hash(password, BCRYPT_WORK_FACTOR);
     const lowercasedEmail = email.toLowerCase();
+
+    //how we enter into the database. We want to insert info to the database.
     const result = await db.query(
       `
         INSERT INTO users(
@@ -89,9 +82,11 @@ class User {
             email
         )
         VALUES ($1, $2, $3, $4, $5)
-        RETURNING id, username, password, first_name, last_name, created_at, updated_at
+        RETURNING id, username, first_name, last_name, created_at, updated_at, email
         `,
-      [username, hashedPassword, first_name, last_name, email]
+
+      //this has to be in order
+      [username, hashedPassword, firstName, lastName, lowercasedEmail]
     );
     const user = result.rows[0];
     return user;

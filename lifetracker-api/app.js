@@ -3,9 +3,11 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const config = require("./config");
+const security = require("./middleware/security");
 
 const { NotFoundError } = require("./utils/errors");
 const authRoutes = require("./routes/auth");
+const nutritionRoutes = require("./routes/nutritions");
 
 const app = express();
 
@@ -13,8 +15,14 @@ app.use(cors());
 
 app.use(express.json());
 app.use(morgan("tiny"));
+//for every request, checks if a token exists.
+//in the authentication header
+//if it does, attach the decoded user to res.locals
+app.use(security.extractUserFromJwt);
 
 app.use("/auth", authRoutes);
+app.use("/nutrition", nutritionRoutes);
+// app.use("/nutrition", nutritionRoutes);
 // error handler
 
 // health check

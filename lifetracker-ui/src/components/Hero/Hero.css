@@ -1,0 +1,27 @@
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../assets/tracker.jpg");
+  height: 300px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-text {
+  text-align: center;
+  top: 90%;
+  left: 50%;
+  transform: (-50%, -50%);
+  color: white;
+}
+h1 {
+  padding: 02%;
+  padding-bottom: 0%;
+  font-size: 50px;
+  color: rgb(225, 208, 241);
+}
+p {
+  font-size: 20px;
+  color: rgb(225, 208, 241);
+}

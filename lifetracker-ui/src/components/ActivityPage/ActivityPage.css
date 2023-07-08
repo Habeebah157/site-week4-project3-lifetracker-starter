@@ -1,0 +1,68 @@
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.fitness-img {
+  width: 400px;
+  height: 400px;
+  margin: 10px;
+  border: 2px solid #fff;
+  box-shadow: 10px 10px 5px #ccc;
+  -moz-box-shadow: 10px 10px 5px #ccc;
+  -webkit-box-shadow: 10px 10px 5px #ccc;
+  -khtml-box-shadow: 10px 10px 5px #ccc;
+}
+.fitness-img:hover {
+  border-color: plum;
+  opacity: 0.5;
+}
+
+p {
+  text-align: center;
+}
+.rest-img {
+  width: 400px;
+  height: 400px;
+  margin: 10px;
+  border: 2px solid #fff;
+  box-shadow: 10px 10px 5px #ccc;
+  -moz-box-shadow: 10px 10px 5px #ccc;
+  -webkit-box-shadow: 10px 10px 5px #ccc;
+  -khtml-box-shadow: 10px 10px 5px #ccc;
+}
+.rest-img:hover {
+  border-color: plum;
+  opacity: 0.5;
+}
+.planner-img {
+  width: 400px;
+  height: 400px;
+  margin: 10px;
+  border: 2px solid #fff;
+  box-shadow: 10px 10px 5px #ccc;
+  -moz-box-shadow: 10px 10px 5px #ccc;
+  -webkit-box-shadow: 10px 10px 5px #ccc;
+  -khtml-box-shadow: 10px 10px 5px #ccc;
+}
+.planner-img:hover {
+  border-color: plum;
+  opacity: 0.5;
+}
+.food-img {
+  width: 400px;
+  height: 400px;
+  margin: 10px;
+  border: 2px solid #fff;
+  box-shadow: 10px 10px 5px #ccc;
+  -moz-box-shadow: 10px 10px 5px #ccc;
+  -webkit-box-shadow: 10px 10px 5px #ccc;
+  -khtml-box-shadow: 10px 10px 5px #ccc;
+}
+.food-img:hover {
+  border-color: #551a8b;
+  opacity: 0.5;
+}
+h2 {
+  color: #551a8b;
+}

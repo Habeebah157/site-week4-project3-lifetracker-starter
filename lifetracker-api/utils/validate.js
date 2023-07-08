@@ -4,6 +4,7 @@ const isNil = (value) =>
   value === null || typeof value === "undefined" || String(value).trim() === "";
 
 const validateFields = ({ required, obj, location }) => {
+  console.log("validateFields", obj);
   if (!obj)
     throw new UnprocessableEntityError(`Missing object for validation.`);
 

@@ -5,9 +5,10 @@ CREATE TABLE users(
     first_name TEXT NOT NULL, 
     last_name TEXT NOT NULL, 
     email TEXT NOT NULL UNIQUE CHECK (POSITION('@' IN email)>1), 
-    created_at TIMESTAMP NOT NULL DEFAULT NOW(), 
-    updated_at TIMESTAMP NOT NULL DEFAULT NOW()
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW()
 );
+
 
 CREATE TABLE nutrition(
     id SERIAL PRIMARY KEY, 
@@ -15,8 +16,8 @@ CREATE TABLE nutrition(
     category TEXT NOT NULL, 
     calories TEXT NOT NULL, 
     image_url TEXT NOT NULL, 
-    user_id TEXT NOT NULL, 
-    created_at TIME
-    -- STAMP NOT NULL DEFAULT NOW()
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE, 
+    created_at TIMESTAMP DEFAULT NOW(),
+    timestamp TIMESTAMP DEFAULT NOW()
 );
 
