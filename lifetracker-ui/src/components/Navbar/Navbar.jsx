@@ -3,7 +3,7 @@ import "./Navbar.css";
 import { Link } from "react-router-dom";
 import image from "../assets/codepath.svg";
 
-const Navbar = ({ loggedIn }) => {
+const Navbar = ({ loggedIn, handleLogOut }) => {
   console.log(loggedIn);
   return (
     <div>
@@ -31,7 +31,7 @@ const Navbar = ({ loggedIn }) => {
         </li>
         {loggedIn ? (
           <Link to="/">
-            <button>Logout</button>
+            <button onClick={handleLogOut}>Logout</button>
           </Link>
         ) : (
           <>

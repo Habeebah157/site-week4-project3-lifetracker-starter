@@ -11,7 +11,7 @@ const ExercisePage = ({ loggedIn }) => {
           <button>Add Exercise</button>
         </>
       ) : (
-        <h1>Not logged in</h1>
+        <h1 className="loggedInh1">Log in to access</h1>
       )}
     </div>
   );

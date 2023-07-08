@@ -16,6 +16,7 @@ import jwtDecode from "jwt-decode";
 function App() {
   const [userName, setUserName] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
+  const [nutritionData, setNutritionData] = useState([]);
 
   useEffect(() => {
     const checkLoggedIn = () => {
@@ -136,7 +137,6 @@ function App() {
     calories,
     image_url
   ) => {
-    console.log("works");
     try {
       const response = await fetch("http://localhost:3002/nutrition/nutrient", {
         method: "POST",
@@ -146,8 +146,11 @@ function App() {
         },
         body: JSON.stringify({ name, category, quantity, calories, image_url }),
       });
+      console.log("works");
       const data = await response.json();
-      console.log(data);
+      console.log(data.NutritionPost);
+      setNutritionData([...nutritionData, data.NutritionPost]);
+      console.log(nutritionData);
       if (response.status === 200) {
         console.log(response);
       } else {
@@ -159,11 +162,19 @@ function App() {
     }
   };
 
+  const handleLogOut = () => {
+    localStorage.removeItem("token");
+    setLoggedIn(false);
+  };
+
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home loggedIn={loggedIn} />} />
+          <Route
+            path="/"
+            element={<Home handleLogOut={handleLogOut} loggedIn={loggedIn} />}
+          />
           <Route
             path="/activity"
             element={<ActivityPageOrg loggedIn={loggedIn} />}
@@ -179,6 +190,7 @@ function App() {
               <NutritionPage
                 onNutritionPage={handleNutrition}
                 loggedIn={loggedIn}
+                nutritionData={nutritionData}
               />
             }
           />

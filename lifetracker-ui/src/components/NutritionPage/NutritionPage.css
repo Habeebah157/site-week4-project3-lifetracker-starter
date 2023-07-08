@@ -3,3 +3,12 @@
   padding: 80px;
   text-align: center;
 }
+.pcolor {
+  color: aqua;
+}
+.nutiInfo p {
+  color: black;
+}
+.nutiInfo {
+  border: dotted;
+}

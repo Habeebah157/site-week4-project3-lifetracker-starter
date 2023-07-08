@@ -4,7 +4,9 @@ import Navbar from "../Navbar/Navbar";
 import { Form } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-const NutritionPage = ({ loggedIn, onNutritionPage }) => {
+const NutritionPage = ({ loggedIn, onNutritionPage, nutritionData }) => {
+  // console.log("nutritiondata", nutritionData);
+  const [nData, setNData] = useState([]);
   const INITIAL_FORM_DATA = {
     name: "",
     category: "",
@@ -25,7 +27,8 @@ const NutritionPage = ({ loggedIn, onNutritionPage }) => {
         },
       }).then((response) => {
         response.json().then((data) => {
-          console.log(data);
+          console.log(data.posts);
+          setNData(data.posts);
         });
       });
     } catch (err) {
@@ -51,37 +54,12 @@ const NutritionPage = ({ loggedIn, onNutritionPage }) => {
     const { name, category, quantity, calories, image_url } = formData;
     onNutritionPage(name, category, quantity, calories, image_url);
     setFormData(INITIAL_FORM_DATA);
-
-    // try{
-    //   const response = await fetch("http://localhost:3002/nutrition/nutrient",{
-    //     method:"POST",
-    //     headers:{
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //       name,
-    //       category,
-    //       quantity,
-    //       calories,
-    //       url
-
-    //     }),
-    //   });
-    //   const data = await response.json();
-    //   if(response.status === 200){
-    //     console.log("ok")
-    //     //do token
-    //   }else{
-    //     console.log("not ok")
-    //   }
-    // }catch{
-    //   console.log("doesnt wordk")
-    // }
   };
-
+  console.log("nData", nData);
   return (
     <div>
       <Navbar />
+
       {loggedIn ? (
         <div>
           <div>
@@ -143,11 +121,26 @@ const NutritionPage = ({ loggedIn, onNutritionPage }) => {
               <button type="submit">Save</button>
             </form>
           </div>
-          {}
+          {/* {nData.map((data) => {
+            {
+              <p>{data.calories}</p>;
+            }
+          })} */}
         </div>
       ) : (
-        <h1>Not Logged In</h1>
+        <h1 className="loggedInh1">Log in to access</h1>
       )}
+      {}
+      {nData.map((data) => {
+        return (
+          <div className="nutiInfo">
+            <p>{data.id}</p>
+            <p>{data.name}</p>
+            <p>{data.category}</p>
+            <p>{data.created_at}</p>
+          </div>
+        );
+      })}
     </div>
   );
 };

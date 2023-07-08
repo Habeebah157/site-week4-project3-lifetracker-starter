@@ -12,7 +12,7 @@ const ActivityPageOrg = ({ loggedIn }) => {
         {loggedIn ? (
           <h1 className="activitytext">Activity</h1>
         ) : (
-          <h1 className="loggedout">Not a logged</h1>
+          <h1 className="loggedout">Log in to access</h1>
         )}
       </div>
     </div>

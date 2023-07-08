@@ -17,7 +17,7 @@ const SleepPage = ({ loggedIn }) => {
           </div>
         </div>
       ) : (
-        <h1>Not Logged In</h1>
+        <h1 className="loggedInh1">Log in to access</h1>
       )}
     </div>
   );
