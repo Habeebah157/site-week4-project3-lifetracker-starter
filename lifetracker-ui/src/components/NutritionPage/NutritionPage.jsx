@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 
 const NutritionPage = ({ loggedIn, onNutritionPage, nutritionData }) => {
   // console.log("nutritiondata", nutritionData);
+
   const [nData, setNData] = useState([]);
   const INITIAL_FORM_DATA = {
     name: "",
@@ -58,7 +59,7 @@ const NutritionPage = ({ loggedIn, onNutritionPage, nutritionData }) => {
   console.log("nData", nData);
   return (
     <div>
-      <Navbar />
+      <Navbar loggedIn={loggedIn} />
 
       {loggedIn ? (
         <div>
@@ -125,24 +126,21 @@ const NutritionPage = ({ loggedIn, onNutritionPage, nutritionData }) => {
               </div>
             </form>
           </div>
-          {/* {nData.map((data) => {
-            {
-              <p>{data.calories}</p>;
-            }
-
-
-          })} */}
 
           {nData.map((data) => {
             const date = new Date(data.created_at);
             const normalDate = date.toLocaleString();
             return (
-              <div className="nutiInfo">
-                <p>{data.id}</p>
-                <p>{data.name}</p>
-                <p>{data.category}</p>
-                <p>{normalDate}</p>
-              </div>
+              <>
+                <span>{normalDate}</span>
+                <div className="nutiInfo">
+                  <p>{data.name}</p>
+                  <p>{data.calories}</p>
+                  <p>{data.category}</p>
+                  <p>{data.quantity}</p>
+                  <img src={data.image_url} />
+                </div>
+              </>
             );
           })}
         </div>

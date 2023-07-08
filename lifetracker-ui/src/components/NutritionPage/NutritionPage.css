@@ -10,7 +10,10 @@
   color: black;
 }
 .nutiInfo {
-  border: dotted;
+  border: solid;
+  width: 50%;
+  margin: 50px;
+  margin-top: 0px;
 }
 .submit {
   width: 100%;

@@ -4,7 +4,7 @@ import Navbar from "../Navbar/Navbar";
 const ExercisePage = ({ loggedIn }) => {
   return (
     <div>
-      <Navbar />
+      <Navbar loggedIn={loggedIn} />
       {loggedIn ? (
         <>
           <h1 className="exercise-header">Exercise</h1>

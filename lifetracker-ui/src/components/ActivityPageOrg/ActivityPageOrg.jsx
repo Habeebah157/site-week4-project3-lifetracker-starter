@@ -7,7 +7,7 @@ const ActivityPageOrg = ({ loggedIn }) => {
   console.log(loggedIn);
   return (
     <div>
-      <Navbar />
+      <Navbar loggedIn={loggedIn} />
       <div>
         {loggedIn ? (
           <h1 className="activitytext">Activity</h1>

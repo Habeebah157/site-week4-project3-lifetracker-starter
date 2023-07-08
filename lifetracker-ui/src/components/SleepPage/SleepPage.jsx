@@ -5,7 +5,7 @@ import Navbar from "../Navbar/Navbar";
 const SleepPage = ({ loggedIn }) => {
   return (
     <div>
-      <Navbar />
+      <Navbar loggedIn={loggedIn} />
 
       {loggedIn ? (
         <div>
