@@ -8,6 +8,7 @@ const security = require("./middleware/security");
 const { NotFoundError } = require("./utils/errors");
 const authRoutes = require("./routes/auth");
 const nutritionRoutes = require("./routes/nutritions");
+const exerciseRoutes = require("./routes/exercise");
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(security.extractUserFromJwt);
 
 app.use("/auth", authRoutes);
 app.use("/nutrition", nutritionRoutes);
+app.use("/workout", exerciseRoutes);
 // app.use("/nutrition", nutritionRoutes);
 // error handler
 

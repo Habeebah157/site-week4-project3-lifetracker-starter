@@ -6,3 +6,20 @@
 .loggedInh1 {
   color: black;
 }
+.exerciseSaveButton {
+  width: 100%;
+}
+.exerciseInfo {
+  border: solid;
+  border-width: 5px;
+  border-color: rgb(77, 3, 73);
+  width: 50%;
+  margin: 50px;
+  margin-top: 0px;
+}
+.categorytxt {
+  color: black;
+}
+.duration {
+  color: black;
+}

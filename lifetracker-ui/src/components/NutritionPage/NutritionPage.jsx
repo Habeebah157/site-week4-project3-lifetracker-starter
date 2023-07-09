@@ -16,7 +16,7 @@ const NutritionPage = ({ loggedIn, onNutritionPage, nutritionData }) => {
     image_url: "",
   };
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
-
+  //get token
   async function handleToken() {
     let token = localStorage.getItem("token");
     try {
@@ -60,6 +60,7 @@ const NutritionPage = ({ loggedIn, onNutritionPage, nutritionData }) => {
     event.currentTarget.src =
       "https://media.istockphoto.com/id/1457889029/photo/group-of-food-with-high-content-of-dietary-fiber-arranged-side-by-side.jpg?s=612x612&w=is&k=20&c=n4-M3CyEMJdmZEsXN92sIQAxQPDJeGPX2tkBk1s_RtE=";
   };
+  const refresh = () => window.location.reload(true);
   console.log("nData", nData);
   return (
     <div>
@@ -70,9 +71,7 @@ const NutritionPage = ({ loggedIn, onNutritionPage, nutritionData }) => {
           <div>
             <h1 className="nutrition-head">Nutrition</h1>
           </div>
-          <div>
-            <button>Record Nutrition</button>
-          </div>
+
           <div>
             <form onSubmit={handleSubmit}>
               <input
@@ -121,11 +120,10 @@ const NutritionPage = ({ loggedIn, onNutritionPage, nutritionData }) => {
                 type="url"
                 value={formData.image_url}
                 onChange={handleChange}
-                onError={addImageFallback}
                 required
               />
               <div>
-                <button className="submit" type="submit">
+                <button className="submit" type="submit" onClick={refresh}>
                   Save
                 </button>
               </div>
@@ -136,16 +134,20 @@ const NutritionPage = ({ loggedIn, onNutritionPage, nutritionData }) => {
             const date = new Date(data.created_at);
             const normalDate = date.toLocaleString();
             return (
-              <>
+              <center>
                 <span>{normalDate}</span>
                 <div className="nutiInfo">
-                  <p>{data.name}</p>
-                  <p>{data.calories}</p>
-                  <p>{data.category}</p>
-                  <p>{data.quantity}</p>
-                  <img src={data.image_url} />
+                  <span className="category">{data.category}</span>
+                  <h2 className="food_name">{data.name}</h2>
+                  <p>{"Calories: " + data.calories}</p>
+                  <p>{"Quantity: " + data.quantity}</p>
+                  <img
+                    className="image"
+                    src={data.image_url}
+                    onError={addImageFallback}
+                  />
                 </div>
-              </>
+              </center>
             );
           })}
         </div>

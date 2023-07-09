@@ -11,7 +11,8 @@ class Nutrition {
               p.calories,
               p.image_url,
               p.user_id,
-              p.created_at
+              p.created_at,
+              p.quantity
               FROM nutrition AS p
                 JOIN users AS u ON u.id = p.user_id
                   ORDER BY p.created_at DESC
@@ -31,7 +32,6 @@ class Nutrition {
   // }
 
   static async createNewNutritionData(post, user) {
-    console.log("Nutrient USER", user);
     const { name, category, email, calories, imageUrl } = post;
     const requiredField = ["name", "category", "quantity", "calories"];
     requiredField.forEach((field) => {
@@ -52,17 +52,25 @@ class Nutrition {
     console.log(user.id);
     const results = await db.query(
       `
-      INSERT INTO nutrition(name, category, calories, image_url, user_id)
-      VALUES ($1, $2, $3, $4, $5) 
+      INSERT INTO nutrition(name, category, calories, image_url, user_id, quantity)
+      VALUES ($1, $2, $3, $4, $5,$6) 
       RETURNING id, 
                 name, 
                 category,
                 calories, 
                 image_url, 
                 user_id, 
-                created_at
+                created_at,
+                quantity
       `,
-      [post.name, post.category, post.calories, post.image_url, user.id]
+      [
+        post.name,
+        post.category,
+        post.calories,
+        post.image_url,
+        user.id,
+        post.quantity,
+      ]
     );
     console.log(results.rows[0]);
     return results.rows[0];

@@ -8,8 +8,9 @@ const ActivityPageOrg = ({ loggedIn }) => {
   console.log(loggedIn);
   const [caloricavg, setCaloricAvg] = useState();
   const [nData, setNData] = useState([]);
+  const [Totalcalories, setTotalCalories] = useState(0);
   let calories = 0;
-  let length = nData.length;
+  console.log("CALOFIEA", calories);
 
   async function handleToken() {
     let token = localStorage.getItem("token");
@@ -33,18 +34,7 @@ const ActivityPageOrg = ({ loggedIn }) => {
 
   useEffect(() => {
     handleToken();
-
-    const sum = nData.reduce(function (prev, current) {
-      return prev + +current.calories;
-    }, 0);
-    console.log(sum);
-    let avg = sum / nData.length;
-    setCaloricAvg(avg);
   }, []);
-
-  // const calculateAverage = nData.map((item,index)=>{
-
-  // })
 
   return (
     <div>
@@ -53,21 +43,28 @@ const ActivityPageOrg = ({ loggedIn }) => {
         {loggedIn ? (
           <>
             <h1 className="activitytext">Activity</h1>
-            {
+            {/* {
               <div className="averagCalories">
                 <p className="caloricavg">{Math.round(caloricavg)}</p>
               </div>
+            } */}
+            {
+              <div className="averagCalories">
+                {nData.map((data) => {
+                  calories = parseInt(data.calories, 10) + calories;
+                  // setCaloricAvg(calories);
+                  return <></>;
+                })}
+              </div>
             }
-            {/* {nData.map((data) => {
-              let calories = 0;
-              calories = parseInt(data.calories, 10) + calories;
-              // setCaloricAvg(calories);
-              return (
-                <>
-                  <p>H</p>
-                </>
-              );
-            })} */}
+            {
+              <div className="averagCalories">
+                <span className="caloriesSpan">Total Calories</span>
+                <p className="caloricavg">
+                  {Math.round(calories / nData.length)}
+                </p>
+              </div>
+            }
           </>
         ) : (
           <h1 className="loggedout">Log in to access</h1>

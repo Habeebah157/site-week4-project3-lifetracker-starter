@@ -17,7 +17,9 @@ function App() {
   const [userName, setUserName] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
   const [nutritionData, setNutritionData] = useState([]);
+  const [exerciseData, setExerciseData] = useState([]);
 
+  //useEffect to get the token and make sure the user is still logged in .
   useEffect(() => {
     const checkLoggedIn = () => {
       const token = localStorage.getItem("token");
@@ -37,7 +39,7 @@ function App() {
     };
     checkLoggedIn();
   });
-
+  //uses the post to create a new user
   const handleSignIn = async (
     email,
     username,
@@ -86,6 +88,8 @@ function App() {
       console.log("Error: ", error);
     }
   };
+
+  // post the login information
   const handleLogin = async (email, password) => {
     try {
       const response = await fetch("http://localhost:3002/auth/login", {
@@ -130,6 +134,8 @@ function App() {
   //called it
   //use effct.
   //axio creat a function with axios
+
+  //Gets the handle Nutrion data and post in in the api
   const handleNutrition = async (
     name,
     category,
@@ -161,6 +167,30 @@ function App() {
       console.error("Error:", error);
     }
   };
+  const onExercisePage = async (name, category, duration, intensity) => {
+    try {
+      const response = await fetch("http://localhost:3002/workout/exercise", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: "Bearer " + localStorage.getItem("token"),
+        },
+        body: JSON.stringify({ name, category, duration, intensity }),
+      });
+      console.log("works");
+      const data = await response.json();
+      console.log(data.ExercisePost);
+      setExerciseData([...exerciseData, data.ExercisePost]);
+      console.log(exerciseData);
+    } catch (error) {
+      console.log("Doesnt work");
+      console.error("Error:", error);
+    }
+  };
+
+  //Handles logout. when logout is pressed, the token should be removed from the localStorage
+
+  //Get exercise data from backend.
 
   const handleLogOut = () => {
     localStorage.removeItem("token");
@@ -196,9 +226,15 @@ function App() {
           />
           <Route
             path="/exercise"
-            element={<ExercisePage loggedIn={loggedIn} />}
+            element={
+              <ExercisePage
+                loggedIn={loggedIn}
+                onExercisePage={onExercisePage}
+              />
+            }
           />
           <Route path="/sleep" element={<SleepPage loggedIn={loggedIn} />} />
+          {/* <Route path="/NutritionPageForm" element={<NutritionPagePopUp />} /> */}
         </Routes>
       </BrowserRouter>
     </div>

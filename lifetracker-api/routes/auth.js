@@ -18,7 +18,7 @@ router.post("/register", async function (req, res, next) {
   try {
     //take from request body like postman
     // the user model or model in general is to interact with the data base (sql)
-    console.log("HELLO");
+
     const user = await User.register(req.body);
     console.log("NEW USER", user);
     const token = createdUserJwt(user);
@@ -34,7 +34,6 @@ router.get(
   security.requireAuthenticationUser,
   async function (req, res, next) {
     try {
-      console.log("HELLO");
       const { email } = res.locals.user;
       const user = await User.fetchUserByEmail(email);
       console.log("ME", user);

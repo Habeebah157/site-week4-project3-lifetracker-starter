@@ -11,10 +11,32 @@
 }
 .nutiInfo {
   border: solid;
+  border-width: 5px;
+  border-color: rgb(77, 3, 73);
   width: 50%;
   margin: 50px;
   margin-top: 0px;
+
+  position: relative;
 }
 .submit {
   width: 100%;
+  text-transform: uppercase;
+  font-size: larger;
+}
+.image {
+  position: absolute;
+  top: 0;
+
+  left: 0;
+  width: 30%;
+  height: 100%;
+  border-radius: 50%;
+}
+.food_name {
+  text-transform: uppercase;
+}
+.category {
+  background-color: rgb(219, 195, 243);
+  text-transform: uppercase;
 }

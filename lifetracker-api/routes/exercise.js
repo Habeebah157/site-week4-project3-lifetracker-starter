@@ -1,37 +1,28 @@
 const express = require("express");
 const security = require("../middleware/security");
-const Nutrition = require("../models/nutrition");
+const Exercise = require("../models/exercises");
 const router = express.Router();
 
 router.post(
-  "/nutrient",
+  "/exercise",
   security.requireAuthenticationUser,
   async (req, res, next) => {
     try {
-      //create a new activity
       const { user } = res.locals;
-
-      const NutritionPost = await Nutrition.createNewNutritionData(
-        req.body,
-        user
-      );
-
-      return res.status(201).json({ NutritionPost });
+      const ExercisePost = await Exercise.createNewExerciseData(req.body, user);
+      return res.status(201).json({ ExercisePost });
     } catch (err) {
       next(err);
     }
   }
 );
 
-// security.requireAuthenticationUser
-
 router.get("/", async (req, res, next) => {
   try {
-    const posts = await Nutrition.listNutritionData();
+    const posts = await Exercise.listExerciseData();
     return res.status(200).json({ posts });
   } catch (err) {
     next(err);
   }
 });
-
 module.exports = router;

@@ -15,6 +15,7 @@ class User {
     };
   }
 
+  //helps method that processes user's login
   static async login(credentials) {
     const { email, password } = credentials;
     const requiredField = ["email", "password"];
