@@ -49,6 +49,7 @@ const SleepPage = ({ loggedIn, onSleepPage }) => {
     console.log("dayof", dayof);
     setFormData;
   };
+  const refresh = () => window.location.reload(true);
   return (
     <div>
       <Navbar loggedIn={loggedIn} />
@@ -64,6 +65,7 @@ const SleepPage = ({ loggedIn, onSleepPage }) => {
                 name="start_time"
                 type="datetime-local"
                 id="start_time"
+                value={formData.start_time}
                 onChange={handleChange}
                 required
               ></input>
@@ -71,16 +73,29 @@ const SleepPage = ({ loggedIn, onSleepPage }) => {
                 type="datetime-local"
                 id="end_time"
                 name="end_time"
-                // value={formData.end_time}
+                value={formData.end_time}
                 onChange={handleChange}
                 required
               />
-              <button className="saveButton" type="subimt">
+              <button onClick={refresh} className="saveButton" type="subimt">
                 Save
               </button>
             </form>
             {nData.map((data) => {
-              return <p>{data.start_time}</p>;
+              let str = data.start_time.split("T");
+              let fstart_time = str[1];
+              let str2 = data.end_time.split("T");
+              let fend_time = str2[1];
+
+              return (
+                <center>
+                  <span>{data.dateof}</span>
+                  <div className="nutiInfo">
+                    <p>{fstart_time}</p>
+                    <p>{fend_time}</p>
+                  </div>
+                </center>
+              );
             })}
           </div>
         </div>

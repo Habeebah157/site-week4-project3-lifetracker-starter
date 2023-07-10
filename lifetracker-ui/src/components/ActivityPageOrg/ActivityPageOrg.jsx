@@ -9,7 +9,11 @@ const ActivityPageOrg = ({ loggedIn }) => {
   const [caloricavg, setCaloricAvg] = useState();
   const [nData, setNData] = useState([]);
   const [Totalcalories, setTotalCalories] = useState(0);
+  const [sleepData, setSleepData] = useState([]);
+  const [workoutData, setWorkoutData] = useState([]);
   let calories = 0;
+  let exerciseTime = 0;
+  let workOutTime = 0;
   console.log("CALOFIEA", calories);
 
   async function handleToken() {
@@ -30,7 +34,39 @@ const ActivityPageOrg = ({ loggedIn }) => {
     } catch (err) {
       console.log(err);
     }
+    try {
+      fetch("http://localhost:3002/sleep", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: "Bearer " + token,
+        },
+      }).then((response) => {
+        response.json().then((data) => {
+          setSleepData(data.posts);
+        });
+      });
+    } catch (err) {
+      console.log(err);
+    }
+    try {
+      fetch("http://localhost:3002/workout", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: "Bearer " + token,
+        },
+      }).then((response) => {
+        response.json().then((data) => {
+          setWorkoutData(data.posts);
+        });
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }
+
+  console.log("ND", sleepData);
 
   useEffect(() => {
     handleToken();
@@ -63,6 +99,35 @@ const ActivityPageOrg = ({ loggedIn }) => {
                 <p className="caloricavg">
                   {Math.round(calories / nData.length)}
                 </p>
+              </div>
+            }
+            {
+              <div className="averageSleep">
+                {sleepData.map((data) => {
+                  exerciseTime = data.end_time.split("T");
+                  exerciseTime = exerciseTime[1];
+                  return <></>;
+                })}
+              </div>
+            }
+            {
+              <div className="averagCalories">
+                <span className="caloriesSpan">Recent Sleep Time</span>
+                <p className="caloricavg">{exerciseTime}</p>
+              </div>
+            }
+            {
+              <div className="averageExercise">
+                {workoutData.map((data) => {
+                  workOutTime = parseInt(data.duration, 10) + workOutTime;
+                  return <></>;
+                })}
+              </div>
+            }
+            {
+              <div className="averagCalories">
+                <span className="caloriesSpan">Average Exercise Duration</span>
+                <p className="caloricavg">{workOutTime}</p>
               </div>
             }
           </>
