@@ -25,7 +25,6 @@ CREATE TABLE exercise(
     category TEXT NOT NULL, 
     duration TEXT NOT NULL, 
     intensity TEXT NOT NULL, 
-    image_url TEXT NOT NULL,
     user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
     created_at TIMESTAMP DEFAULT NOW()
 );

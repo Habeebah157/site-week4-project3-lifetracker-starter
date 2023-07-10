@@ -6,9 +6,12 @@ const config = require("./config");
 const security = require("./middleware/security");
 
 const { NotFoundError } = require("./utils/errors");
+
+//import routes
 const authRoutes = require("./routes/auth");
 const nutritionRoutes = require("./routes/nutritions");
 const exerciseRoutes = require("./routes/exercise");
+const sleepRoutes = require("./routes/sleep");
 
 const app = express();
 
@@ -24,6 +27,7 @@ app.use(security.extractUserFromJwt);
 app.use("/auth", authRoutes);
 app.use("/nutrition", nutritionRoutes);
 app.use("/workout", exerciseRoutes);
+app.use("/sleep", sleepRoutes);
 // app.use("/nutrition", nutritionRoutes);
 // error handler
 

@@ -53,6 +53,7 @@ const NutritionPage = ({ loggedIn, onNutritionPage, nutritionData }) => {
     event.preventDefault();
     console.log(formData);
     const { name, category, quantity, calories, image_url } = formData;
+    console.log(formData);
     onNutritionPage(name, category, quantity, calories, image_url);
     setFormData(INITIAL_FORM_DATA);
   };

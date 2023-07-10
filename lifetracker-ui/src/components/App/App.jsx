@@ -18,6 +18,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [nutritionData, setNutritionData] = useState([]);
   const [exerciseData, setExerciseData] = useState([]);
+  const [sleepData, setSleepData] = useState([]);
 
   //useEffect to get the token and make sure the user is still logged in .
   useEffect(() => {
@@ -188,6 +189,25 @@ function App() {
     }
   };
 
+  const onSleepPage = async (start_time, end_time, dateof) => {
+    try {
+      const response = await fetch("http://localhost:3002/sleep/sleepPost", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: "Bearer " + localStorage.getItem("token"),
+        },
+
+        body: JSON.stringify({ start_time, end_time, dateof }),
+      });
+      console.log("dayof", dateof);
+      const data = await response.json();
+      setSleepData([...sleepData, data.SleepPost]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   //Handles logout. when logout is pressed, the token should be removed from the localStorage
 
   //Get exercise data from backend.
@@ -233,7 +253,12 @@ function App() {
               />
             }
           />
-          <Route path="/sleep" element={<SleepPage loggedIn={loggedIn} />} />
+          <Route
+            path="/sleep"
+            element={
+              <SleepPage loggedIn={loggedIn} onSleepPage={onSleepPage} />
+            }
+          />
           {/* <Route path="/NutritionPageForm" element={<NutritionPagePopUp />} /> */}
         </Routes>
       </BrowserRouter>

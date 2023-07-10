@@ -49,6 +49,7 @@ const ExercisePage = ({ loggedIn, onExercisePage }) => {
 
     setFormData(INITIAL_FORM_DATA);
   };
+  const refresh = () => window.location.reload(true);
   return (
     <div>
       <Navbar loggedIn={loggedIn} />
@@ -94,7 +95,9 @@ const ExercisePage = ({ loggedIn, onExercisePage }) => {
                   type="number"
                   required
                 />
-                <button className="exerciseSaveButton">SAVE</button>
+                <button onClick={refresh} className="exerciseSaveButton">
+                  SAVE
+                </button>
               </form>
             </div>
             {nData.map((data) => {

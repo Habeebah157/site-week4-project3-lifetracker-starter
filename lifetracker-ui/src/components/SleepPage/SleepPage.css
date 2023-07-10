@@ -3,3 +3,8 @@
   background-color: purple;
   padding: 80px;
 }
+.saveButton {
+  width: 100%;
+  text-transform: uppercase;
+  font-size: larger;
+}
