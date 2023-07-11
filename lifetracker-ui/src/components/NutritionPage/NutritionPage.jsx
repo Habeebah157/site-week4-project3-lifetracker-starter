@@ -20,7 +20,7 @@ const NutritionPage = ({ loggedIn, onNutritionPage, nutritionData }) => {
   async function handleToken() {
     let token = localStorage.getItem("token");
     try {
-      fetch("http://localhost:3002/nutrition", {
+      fetch("https://lifetracker-api-uo7v.onrender.com/nutrition", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

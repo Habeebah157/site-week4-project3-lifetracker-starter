@@ -12,7 +12,7 @@ const SleepPage = ({ loggedIn, onSleepPage }) => {
   async function handleToken() {
     let token = localStorage.getItem("token");
     try {
-      fetch("http://localhost:3002/sleep", {
+      fetch("https://lifetracker-api-uo7v.onrender.com/sleep", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
